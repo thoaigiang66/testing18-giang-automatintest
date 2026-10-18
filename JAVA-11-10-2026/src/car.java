@@ -1,24 +1,54 @@
-public class car extends vehicle{
+
+public class Car extends Vehicle {
+
     int seats;
-    String fullType;
+    private String fuelType;
 
-    public car(){
-        super(); // kế thừa hàm khởi tạo không tham số của class cha
+    public int getSeats() {
+        return seats;
     }
-
-    public car(String id, String name,String model, String color, int seats,
-               String fuelType) {
-        super(id, name, model, color); //kế thừa hàm khởi tạo có tham số của class cha
+ // khi class cha có hàm abstract
+    // => class con phải define lại hàm đó, cùng kiểu dữ liệu, cùng tên hm
+    // @Overridedde danh dau hàm này là của class cha
+    @Override 
+    public void  getInfor(){
+        System.out.println("Seats: " + seats);
+        System.out.println("Fuel type: " + fuelType);
+    }
+    public void setSeats(int seats) {
         this.seats = seats;
-        this.fullType = fuelType;
     }
-    public void display(){
+
+    public String getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    // Constructor khong tham so
+    public Car() {
+        super();
+    }
+
+    // Constructor co tham so
+    public Car(String id, String name,
+               String model, String color,
+               int seats, String fuelType) {
+
+        super(id, name, model, color);
+
+        this.seats = seats;
+        this.fuelType = fuelType;
+    }
+
+    // Ghi de phuong thuc display cua class cha
+    @Override
+    public void display() {
         super.display();
-        System.out.println("seats: " + seats);
-        System.out.println("Fuel type: " + fullType);
- // lưu ý: 1. không được dùng class cha vì class cha chỉ để kế thừa
- // 2.
-  car mec = new car("1", "Maybach", "maybach2020", "den", 4, "xang");
-  mec.display();
+
+        System.out.println("Seats: " + seats);
+        System.out.println("Fuel type: " + fuelType);
     }
 }
